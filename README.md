@@ -1,4 +1,21 @@
-﻿## 中文版教程：https://www.showdoc.cc/help 
+﻿### docker 容器部署
+```
+# root 操作
+## 下载代码制作镜像
+mkdir -p /data/git/
+cd /data/git
+git clone https://github.com/huahouye/showdoc.git
+chomod -R 777 /data/git/showdoc/
+cd showdoc
+docker build -t showdoc .
+
+## 运行容器，需要挂在 git 克隆下来的整个目录
+docker run -d --restart=always --name showdoc -v /data/git/showdoc/:/var/www/html/ -p 4999:80 showdoc
+```
+
+----------------
+
+## 中文版教程：https://www.showdoc.cc/help 
 
 ### What is ShowDoc ?
 
